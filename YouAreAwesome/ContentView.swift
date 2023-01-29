@@ -8,59 +8,38 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var messageString = "When the Genius bar needs help, they call you!"
+    @State private var messageString = ""
     var body: some View {
-        
-        ZStack {
-            Rectangle()
-                .fill(
-                    Gradient(colors: [Color("SkyBlue"), .indigo])
-                )
-                .ignoresSafeArea()
-    
-            VStack {
+        VStack {
+            Spacer()
+            
                 
-                Text("You Have Skills!")
-                    .font(.largeTitle)
-                    .fontWeight(.black)
-                    .foregroundColor(Color("Gold-BC"))
-                    .padding()
-                    .background(Color("Maroon-BC"))
-                    .cornerRadius(15)
-                
-                Spacer()
-                
-                Text(messageString)
-                    .font(.largeTitle)
-                    .fontWeight(.heavy)
-                    .minimumScaleFactor(0.5)
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(.red)
-                    .frame(height: 150)
-                    .frame(maxWidth: .infinity)
-    //                .border(.orange, width: 1)
-                    .padding()
-                
-                Spacer()
-
-                HStack {
-                    Button("Awesome") {
-                        // this is the action performed when the button is pressed
-                        messageString = "You Are Awesome!"
-                    }
-                    .buttonStyle(.borderedProminent)
-                    
-                    Spacer()
-                    
-                    Button("Great") {
-                        messageString = "You Are Great!"
-                    }
-                    .buttonStyle(.borderedProminent)
-                }
-    //            .border(.purple, width: 5)
+            Text(messageString)
+                .font(.largeTitle)
+                .fontWeight(.heavy)
+                .minimumScaleFactor(0.5)
+                .multilineTextAlignment(.center)
+                .foregroundColor(.pink)
+                .frame(height: 150)
+                .frame(maxWidth: .infinity)
                 .padding()
-                .tint(Color("Vermillion"))
+            
+            Spacer()
+            
+            Button("Show Message") {
+                let message1 = "You Are Awesome!"
+                let message2 = "You Are Great!"
+                
+                // this is the action performed when the button is pressed
+                if messageString == message1 {
+                    messageString = message2
+                } else {
+                    messageString = message1
+                }
             }
+            .buttonStyle(.borderedProminent)
+
+            .padding()
         }
     }
 }
